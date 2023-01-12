@@ -48,7 +48,37 @@
     }
     */
 
-    
+    function playRound(play, comp){
+        if (comp == play) {
+            let result = "You Tied!";
+            return result;
+        } else if (play == "Rock") {
+            if (comp == "Scissors") {
+                let result = "You Win!";
+                return result;
+            } else {
+                let result = "You Lose!";
+                return result;
+            }
+        } else if (play == "Paper"){
+            if (comp == "Rock") {
+                let result = "You Win!";
+                return result;
+            } else {
+                let result = "You Lose!";
+                return result;
+            }
+        } else if (play == "Scissors") {
+            if (comp == "Paper") {
+                let result = "You Win!";
+                return result;
+            } else {
+                let result = "You Lose!";
+                return result;
+            }
+        }
+    }
+
     console.log("Computer Chose: " + getComputerChoice());
     console.log("Player Chose: " + getPlayerChoice());
     console.log(playRound(playerSelection, computerSelection));
