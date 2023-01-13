@@ -79,10 +79,29 @@
         }
     }
 
-    console.log("Computer Chose: " + getComputerChoice());
+    function game(){
+        let playerCount = 0;
+        let compCount = 0;
+        let tieCount = 0;
+        for (let i = 0; i < 5; i++) {
+            let result = playRound(getPlayerChoice(), getComputerChoice());
+            console.log("Computer Chose: " + computerSelection + ", Player Chose: " + playerSelection + ". " + result);
+            if (result == "You Win!") {
+                playerCount++;
+            } else if (result == "You Lose!") {
+                compCount++;
+            } else if (result == "You Tied!") {
+                tieCount++;
+            }
+            console.log("Wins: " + playerCount + ", Losses: " + compCount + ", Ties:" + tieCount);
+        }
+    }
+
+    game();
+    /*console.log("Computer Chose: " + getComputerChoice());
     console.log("Player Chose: " + getPlayerChoice());
     console.log(playRound(playerSelection, computerSelection));
-
+*/
 </script>
 <body>
     
