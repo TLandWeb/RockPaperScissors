@@ -1,4 +1,7 @@
 let computerSelection;
+let playerCount = 0;
+let compCount = 0;
+let tieCount = 0;
 
 function getComputerChoice(){
     let number = Math.floor(Math.random() * 3);
@@ -46,11 +49,10 @@ function playRound(play, comp){
 }
 
 function game(playerSelection){
-    let playerCount = 0;
-    let compCount = 0;
-    let tieCount = 0;
-        
     let result = playRound(playerSelection, getComputerChoice());
+    const singleResult = document.createElement('div');
+    singleResult.textContent = `${playerSelection} VS ${computerSelection}! ${result}`;
+    container.appendChild(singleResult);
     
     if (result == "You Win!") {
         playerCount++;
@@ -59,7 +61,18 @@ function game(playerSelection){
     } else if (result == "You Tied!") {
         tieCount++;
     }
-    console.log("Wins: " + playerCount + ", Losses: " + compCount + ", Ties:" + tieCount);       
+
+    winResults.textContent = `Wins: ${playerCount}, Losses: ${compCount}, Ties: ${tieCount}`;   
+
+    if (playerCount == 5 || compCount == 5){
+        const finalWinner = document.createElement('div');
+        if (playerCount == 5){
+            finalWinner.textContent = "5 Time Winner, Chicken Dinner!";
+        } else {
+            finalWinner.textContent = "5 Time Loser, What a Hooser!"
+        }
+        winResults.appendChild(finalWinner);
+    }
 }
 
 const btnRock = document.querySelector('#Rock');
@@ -72,11 +85,8 @@ const btnScissors = document.querySelector('#Scissors');
 btnScissors.addEventListener('click', function(){game('Scissors');});
 
 const container = document.querySelector('#DisplayResults');
-const singleResult = document.createElement('div');
-let playerSelection = 'Paper';
-let result = 'you win!';
-singleResult.textContent = `Computer Chose: ${computerSelection}, Player Chose: ${playerSelection}.  ${result}`;
-container.appendChild(singleResult);
+
+const winResults = document.querySelector('#WinCount');
 
 
 
