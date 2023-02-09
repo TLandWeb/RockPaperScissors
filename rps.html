@@ -5,105 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="rps.js" defer></script>
 </head>
-<script>
-    let computerSelection;
-    let playerSelection;
 
-    function getComputerChoice(){
-        let number = Math.floor(Math.random() * 3);
-        if (number == 0) {
-            computerSelection = "Rock";
-            return computerSelection;
-        } else if (number == 1) {
-            computerSelection = "Paper";
-            return computerSelection;
-        } else {
-            computerSelection = "Scissors";
-            return computerSelection;
-        }
-    }
-
-    function getPlayerChoice(){
-        let input = prompt("Rock, Paper, or Scissors?");
-        input = input.toLowerCase();
-        let first = input.charAt(0);
-        first = first.toUpperCase();
-        input = input.slice(1);
-        playerSelection = first + input;
-        return playerSelection;
-    }
-    /*
-    function playRound(play, comp){
-        if (((play == "Rock") && (comp == "Rock")) || ((play == "Paper") && (comp == "Paper")) || ((play = "Scissors") && (comp = "Scissors"))) {
-            let result = "You Tied!";
-            return result;
-        } else if ((play == "Rock" && comp == "Paper") || (play == "Paper" && comp == "Scissors") || (play == "Scissors" && comp == "Rock")) {
-            let result = "You Lost!";
-            return result;
-        } else if ((play == "Rock" && comp== "Scissors") || (play == "Paper" && comp == "Rock") || (play == "Scissors" && comp == "Paper")) {
-            let result = "You Win!";
-            return result;
-        }
-    }
-    */
-
-    function playRound(play, comp){
-        if (comp == play) {
-            let result = "You Tied!";
-            return result;
-        } else if (play == "Rock") {
-            if (comp == "Scissors") {
-                let result = "You Win!";
-                return result;
-            } else {
-                let result = "You Lose!";
-                return result;
-            }
-        } else if (play == "Paper"){
-            if (comp == "Rock") {
-                let result = "You Win!";
-                return result;
-            } else {
-                let result = "You Lose!";
-                return result;
-            }
-        } else if (play == "Scissors") {
-            if (comp == "Paper") {
-                let result = "You Win!";
-                return result;
-            } else {
-                let result = "You Lose!";
-                return result;
-            }
-        }
-    }
-
-    function game(){
-        let playerCount = 0;
-        let compCount = 0;
-        let tieCount = 0;
-        for (let i = 0; i < 5; i++) {
-            let result = playRound(getPlayerChoice(), getComputerChoice());
-            console.log("Computer Chose: " + computerSelection + ", Player Chose: " + playerSelection + ". " + result);
-            if (result == "You Win!") {
-                playerCount++;
-            } else if (result == "You Lose!") {
-                compCount++;
-            } else if (result == "You Tied!") {
-                tieCount++;
-            }
-            console.log("Wins: " + playerCount + ", Losses: " + compCount + ", Ties:" + tieCount);
-        }
-    }
-
-    game();
-    /*console.log("Computer Chose: " + getComputerChoice());
-    console.log("Player Chose: " + getPlayerChoice());
-    console.log(playRound(playerSelection, computerSelection));
-*/
-</script>
 <body>
-    
+    <button class="button" id="Rock">Rock</button>
+    <button class="button" id="Paper">Paper</button>
+    <button class="button" id="Scissors">Scissors</button>
+
+
 </body>
 </html>
